@@ -1,0 +1,35 @@
+name: Improvement
+description: Here's a way you can make your code better!
+title: "[IMPROVE] "
+labels: [improvement]
+assignees:
+  - noClaps
+body:
+- type: checkboxes
+  attributes:
+    label: Have you read the code of conduct?
+    description: Please read the code of conduct before submitting an issue.
+    options:
+    - label: I have read the code of conduct.
+      required: true
+
+- type: input
+  attributes:
+    label: Language
+    description: Which programming language is this issue for?
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Problem number
+    description: Which problem is this issue for?
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Your suggestion
+    description: How do you suggest I can improve my code?
+  validations:
+    required: true
