@@ -7,7 +7,7 @@ def factorise(n):
         if n == 1:
             break
         else:
-            while n % i == 0 and n != 1:
+            while n % i == 0:
                 for x in factors:
                     if i % x == 0:
                         next
