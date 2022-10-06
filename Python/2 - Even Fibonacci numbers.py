@@ -9,9 +9,7 @@ def evenfib(n):
     while x <= n:
         if x % 2 == 0:
             total += x
-        z = x + y
-        x = y
-        y = z
+        x, y = y, x+y
 
     print(total)
 
