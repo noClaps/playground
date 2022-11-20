@@ -10,4 +10,4 @@ I personally use [Nayuki's solutions](https://www.nayuki.io/page/project-euler-s
 Obviously, credits to [Project Euler](https://projecteuler.net) for the problems.
 
 ## License
-All of the code in this repository is licensed under the [Unlicense](UNLICENSE).
+All of the code in this repository is licensed under the [BSD Zero Clause license](LICENSE).
