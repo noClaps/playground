@@ -7,7 +7,7 @@ def sumOfMultiples(rng):
         if i % 3 == 0 or i % 5 == 0:
             total += i
 
-    print(total)
+    return total
 
 
-sumOfMultiples(1000)
+print(sumOfMultiples(1000))

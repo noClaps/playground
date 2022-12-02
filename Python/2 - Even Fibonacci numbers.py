@@ -11,6 +11,6 @@ def evenfib(n):
             total += x
         x, y = y, x+y
 
-    print(total)
+    return total
 
-evenfib(4000000)
+print(evenfib(4000000))
