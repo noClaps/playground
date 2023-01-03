@@ -1,5 +1,5 @@
 # Project Euler Solutions
-This repo contains solutions for the [Project Euler](https://projecteuler.net) problems. The solutions for different languages are in their respective language folders.
+This repo contains solutions for the [Project Euler](https://projecteuler.net) problems.
 
 ## Disclaimer
 I am not a professional programmer, and the programs I write may not be the best or most optimised solutions to the problems.
