@@ -1,13 +1,5 @@
-# Project Euler Solutions
-This repo contains solutions for the [Project Euler](https://projecteuler.net) problems.
-
-## Disclaimer
-I am not a professional programmer, and the programs I write may not be the best or most optimised solutions to the problems.
-
-## Credits
-I personally use [Nayuki's solutions](https://www.nayuki.io/page/project-euler-solutions) ([Github](https://github.com/nayuki/Project-Euler-solutions)) to check if my final answer is correct, but I write and optimise my code myself.
-
-Obviously, credits to [Project Euler](https://projecteuler.net) for the problems.
+# Dart stuff
+This is pretty much just a testing ground for my Dart explorations. I'll try to not commit anything that doesn't work, but no guarantees!
 
 ## License
 All of the code in this repository is licensed under the [BSD Zero Clause license](LICENSE).
