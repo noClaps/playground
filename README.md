@@ -1,5 +1,6 @@
-# Dart stuff
-This is pretty much just a testing ground for my Dart explorations. I'll try to not commit anything that doesn't work, but no guarantees!
+# Playground
+
+This is a place for me to explore different programming languages and ideas. Will mostly be terminal-based stuff.
 
 ## License
 All of the code in this repository is licensed under the [BSD Zero Clause license](LICENSE).
