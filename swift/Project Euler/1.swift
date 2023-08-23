@@ -1,13 +1,10 @@
 func sum3Or5(lim: Int) -> Int {
-    var n = 0
     var sum = 0
     
-    while n < lim {
+    for n in 0..<lim {
         if n % 3 == 0 || n % 5 == 0 {
             sum += n
         }
-
-        n += 1
     }
 
     return sum
