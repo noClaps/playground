@@ -1,10 +1,7 @@
 def fizzBuzz():
-        myArray = [i for i in range(1, 10001)]
-
-        for i in range(2, 10000, 3): myArray[i] = "Fizz"
-        for i in range(4, 10000, 5): myArray[i] = "Buzz"
-        for i in range(14, 10000, 15): myArray[i] = "FizzBuzz"
-
-        print(myArray)
+        print(["FizzBuzz" if i % 15 == 0
+               else "Fizz" if i % 3 == 0
+               else "Buzz" if i % 5 == 0
+               else i for i in range(1, 10001)])
 
 fizzBuzz()
