@@ -9,7 +9,7 @@ while true {
     } else {
       print("Your password: \(generatePassword(length: length))")
       print("Make sure to keep it safe in a password manager!")
-      
+
       break
     }
   } else {
