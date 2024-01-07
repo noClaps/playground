@@ -48,5 +48,5 @@ for i in 1...argv.count - 1 {
     let time = -timeStart.timeIntervalSinceNow
     avg += time
   }
-  print("Command: '\(argv[i])'\nTime: \(format(avg / 200))\n")
+  print("Command: '\(argv[i])'\nTime: \(format(avg / count))\n")
 }
