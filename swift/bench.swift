@@ -29,11 +29,11 @@ func shell(_ command: String) {
 }
 
 func format(_ time: Double) -> String {
-  if time < 1 / 100000 {
-    return "\(time * 1_000_000) µs"
+  if time < 1 / 1000 {
+    return "\((time * 1_000_000)) µs"
   }
 
-  if time < 1 / 100 {
+  if time < 1 {
     return "\(time * 1000) ms"
   }
 
@@ -48,5 +48,5 @@ for i in 1...argv.count - 1 {
     let time = -timeStart.timeIntervalSinceNow
     avg += time
   }
-  print("Command: '\(argv[i])'\nTime: \(format(avg / count))\n")
+  print("Command: '\(argv[i])'\nTime: \(format(avg / Double(count)))\n")
 }
