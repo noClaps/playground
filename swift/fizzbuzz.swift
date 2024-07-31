@@ -1,18 +1,8 @@
 for i in 1...10000 {
-  if i % 15 == 0 {
-    print("FizzBuzz")
-    continue
-  }
-
-  if i % 3 == 0 {
-    print("Fizz")
-    continue
-  }
-
-  if i % 5 == 0 {
-    print("Buzz")
-    continue
-  }
-
-  print(i)
+    switch (i%3, i%5) {
+        case (0, 0): print("Fizzbuzz")
+        case (0, _): print("Fizz")
+        case (_, 0): print("Buzz")
+        default: print(i)
+    }
 }
