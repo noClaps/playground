@@ -13,29 +13,29 @@ var numerator = Int(fraction[0]) ?? 1
 var denominator = Int(fraction[1]) ?? 1
 
 if numerator >= denominator {
-  print("Improper fraction entered, please try again.")
+	print("Improper fraction entered, please try again.")
 }
 
 if numerator == 1 {
-  fractions.append("1/\(denominator)")
+	fractions.append("1/\(denominator)")
 }
 
 while numerator != 1 {
-  // Find n such that 1/n < numerator/denominator
-  let n = Int(ceil(Double(denominator) / Double(numerator)))
-  fractions.append("1/\(n)")
+	// Find n such that 1/n < numerator/denominator
+	let n = Int(ceil(Double(denominator) / Double(numerator)))
+	fractions.append("1/\(n)")
 
-  // numerator/denominator - 1/n
-  numerator = numerator * n - denominator
-  denominator = denominator * n
+	// numerator/denominator - 1/n
+	numerator = numerator * n - denominator
+	denominator = denominator * n
 
-  if numerator == 1 {
-    fractions.append("1/\(denominator)")
-  }
+	if numerator == 1 {
+		fractions.append("1/\(denominator)")
+	}
 
-  if numerator == 0 {
-    break
-  }
+	if numerator == 0 {
+		break
+	}
 }
 
 print(fractions.joined(separator: " + "))
