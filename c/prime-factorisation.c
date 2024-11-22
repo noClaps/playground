@@ -1,44 +1,12 @@
+#include "lib.h"
 #include <_string.h>
 #include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
 
-size_t max(size_t a, size_t b) {
-  if (a > b)
-    return a;
-  return b;
-}
-
-/*
-This function calculates the size of an array. It assumes that the array was
-initialised with malloc() and that all empty elements are 0.
-*/
-size_t arr_size(unsigned long long *arr) {
-  size_t size;
-  for (size = 0; arr[size] != 0; size++)
-    ;
-  return size;
-}
-
-/*
-This function prints an array with nice formatting, like in other languages
-like TypeScript, Python, or Swift. It uses the `arr_size()` function to find
-the length of the array, so any empty elements in the array should be 0.
-*/
-void arr_print(unsigned long long *arr) {
-  size_t arrLen = arr_size(arr);
-
-  if (arrLen == 0) {
-      printf("[]\n");
-      return;
-  }
-
-  printf("[");
-  for (size_t i = 0; i < arrLen - 1; i++)
-    printf("%llu, ", arr[i]);
-
-  printf("%llu]\n", arr[arrLen - 1]);
-}
+struct tuple {
+  unsigned long long *arr;
+  size_t len;
+};
 
 /*
 This function takes a number to factorise, and an existing list of factors. The
@@ -48,24 +16,30 @@ when calling this function from `main()` should be created using `malloc()` and
 should not contain any values. The only reason this is necessary is because C
 doesn't support default arguments.
 */
-unsigned long long *factorise(unsigned long long num,
-                              unsigned long long *factors) {
+struct tuple factorise(unsigned long long num, unsigned long long *factors,
+                       size_t arr_size) {
   unsigned long long originalNum = num;
 
   for (int i = 2; i <= sqrt(num); i++) {
     if (num % i == 0) {
       num /= i;
-      factors[arr_size(factors)] = i;
+      factors[arr_size] = i;
+      arr_size++;
       break;
     }
   }
 
-  if (num == originalNum)
-    factors[arr_size(factors)] = num;
-  else
-    factors = factorise(num, factors);
+  if (num == originalNum) {
+    factors[arr_size] = num;
+    arr_size++;
+  } else {
+    struct tuple f = factorise(num, factors, arr_size);
+    factors = f.arr;
+    arr_size = f.len;
+  }
 
-  return factors;
+  struct tuple f = {factors, arr_size};
+  return f;
 }
 
 /*
@@ -100,10 +74,11 @@ int main(int argc, char **argv) {
     exit(2);
   }
 
-  size_t arrLen = strnlen(argv[1], num);
-  unsigned long long *factorsArr = malloc(max(arrLen, 10));
+  size_t arrLen = max(strnlen(argv[1], num), 10);
+  unsigned long long *factorsArr = malloc(arrLen);
 
-  arr_print(factorise(num, factorsArr));
+  struct tuple f = factorise(num, factorsArr, 0);
+  arr_print(f.arr, f.len);
 
   return 0;
 }
