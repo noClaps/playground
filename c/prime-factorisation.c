@@ -50,8 +50,7 @@ numbers that are the prime factors of that number. Example:
 `$ ./pf 25`
 `[5, 5]`
 
-The maximum input is 18446744073709551615, any inputs larger than that will
-default to 18446744073709551615.
+The maximum input is 18446744073709551615.
 */
 int main(int argc, char **argv) {
   if (argc != 2) {
