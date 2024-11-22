@@ -28,6 +28,11 @@ the length of the array, so any empty elements in the array should be 0.
 void arr_print(unsigned long long *arr) {
   size_t arrLen = arr_size(arr);
 
+  if (arrLen == 0) {
+      printf("[]\n");
+      return;
+  }
+
   printf("[");
   for (size_t i = 0; i < arrLen - 1; i++)
     printf("%llu, ", arr[i]);
