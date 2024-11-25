@@ -32,7 +32,7 @@ The maximum input is 18446744073709551615.
 */
 int main(int argc, char **argv) {
   if (argc != 2) {
-    fprintf(stderr, "Incorrect usage. Correct usage is ./fib <number>");
+    fprintf(stderr, "Incorrect usage. Correct usage is ./fib <number>\n");
     exit(1);
   }
 
