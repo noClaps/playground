@@ -1,5 +1,4 @@
 #include "lib.h"
-#include <stdlib.h>
 
 /*
 This function takes a number and an array, and outputs that number of values in

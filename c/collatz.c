@@ -1,6 +1,4 @@
 #include "lib.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 struct tuple {
   unsigned *arr;

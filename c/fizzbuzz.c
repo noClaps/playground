@@ -1,6 +1,4 @@
 #include "lib.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void fizzbuzz(unsigned count) {
     for (unsigned i = 1; i <= count; i++) {
