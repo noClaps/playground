@@ -24,6 +24,30 @@ void check_in_range(unsigned num, char *firstArg) {
 }
 
 /*
+This function concatenates two arrays, and frees the memory of the second one.
+The parameters are:
+- arr1: The array to get concatenated to
+- arr1_size: The size of arr1
+- arr2: The array getting concatenatated and then freed.
+- arr2_size: The size of arr2
+
+It returns the new size of arr1, which is arr1_size + arr2_size.
+*/
+size_t arr_concat(unsigned *arr1, size_t arr1_size, unsigned* arr2, size_t arr2_size) {
+    size_t newSize = arr1_size + arr2_size;
+    arr1 = (unsigned*)realloc(arr1, newSize);
+
+    for (size_t i = arr1_size; i < newSize; i++) {
+        size_t arr2_index = i - arr1_size;
+        arr1[i] = arr2[arr2_index];
+    }
+
+    free(arr2);
+
+    return newSize;
+}
+
+/*
 This function appends a value to the end of an array, and returns the new size.
 */
 size_t arr_append(unsigned *arr, size_t arr_size,
