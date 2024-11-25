@@ -22,12 +22,15 @@ void check_in_range(unsigned long long num, char *firstArg) {
 }
 
 /*
-This function finds the maximum value of two inputs.
+This function appends a value to the end of an array, and returns the new size.
 */
-unsigned long long max(unsigned long long a, unsigned long long b) {
-  if (a > b)
-    return a;
-  return b;
+size_t arr_append(unsigned long long *arr, size_t arr_size,
+                  unsigned long long elem) {
+  arr_size++;
+  arr = (unsigned long long *)realloc(arr, arr_size);
+  arr[arr_size - 1] = elem;
+
+  return arr_size;
 }
 
 /*

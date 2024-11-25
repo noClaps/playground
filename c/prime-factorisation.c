@@ -22,15 +22,13 @@ struct tuple factorise(unsigned long long num, unsigned long long *factors,
   for (int i = 2; i <= sqrt(num); i++) {
     if (num % i == 0) {
       num /= i;
-      factors[arr_size] = i;
-      arr_size++;
+      arr_size = arr_append(factors, arr_size, i);
       break;
     }
   }
 
   if (num == originalNum) {
-    factors[arr_size] = num;
-    arr_size++;
+    arr_size = arr_append(factors, arr_size, num);
   } else {
     struct tuple f = factorise(num, factors, arr_size);
     factors = f.arr;
@@ -61,8 +59,7 @@ int main(int argc, char **argv) {
   unsigned long long num = strtoull(argv[1], &eptr, 10);
   check_in_range(num, argv[1]);
 
-  size_t arrLen = max(strnlen(argv[1], num), 10);
-  unsigned long long *factorsArr = malloc(arrLen);
+  unsigned long long *factorsArr = malloc(0);
 
   struct tuple f = factorise(num, factorsArr, 0);
   arr_print(f.arr, f.len);
