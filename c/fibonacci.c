@@ -5,14 +5,15 @@
 This function takes a number and an array, and outputs that number of values in
 the Fibonacci sequence.
 */
-unsigned long long *fibonacci(unsigned n, unsigned long long *nums,
-                              size_t arr_size) {
-  unsigned long long a = 0;
-  unsigned long long b = 1;
+unsigned *fibonacci(unsigned n) {
+  unsigned *nums = malloc(n);
+
+  unsigned a = 0;
+  unsigned b = 1;
 
   for (size_t i = 0; i < n; i++) {
     nums[i] = a;
-    unsigned long long temp = a;
+    unsigned temp = a;
     a = b;
     b += temp;
   }
@@ -37,11 +38,10 @@ int main(int argc, char **argv) {
   }
 
   char *eptr;
-  unsigned long long num = strtoull(argv[1], &eptr, 10);
+  unsigned num = strtoull(argv[1], &eptr, 10);
   check_in_range(num, argv[1]);
 
-  unsigned long long *fib = malloc(num);
-  arr_print(fibonacci(num, fib, num), num);
+  arr_print(fibonacci(num), num);
 
   return 0;
 }

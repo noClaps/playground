@@ -1,20 +1,22 @@
 #pragma once
 
+#include <limits.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void check_in_range(unsigned long long num, char *firstArg) {
+void check_in_range(unsigned num, char *firstArg) {
   char *numStr;
-  asprintf(&numStr, "%llu", num);
+  asprintf(&numStr, "%u", num);
 
-  if (num == 0 || strncmp(numStr, firstArg, 21) > 0) {
+  if (strncmp(numStr, firstArg, 11) > 0) {
     fprintf(stderr, "Input too small, the minimum input is 1.\n");
     exit(2);
-  } else if (strncmp(numStr, firstArg, 21) < 0) {
+  } else if (strncmp(numStr, firstArg, 11) < 0) {
+
     fprintf(stderr,
-            "Input too large, the maximum input is 18446744073709551615.\n");
+            "Input too large, the maximum input is %u.\n", UINT_MAX);
     exit(2);
   }
 
@@ -24,10 +26,10 @@ void check_in_range(unsigned long long num, char *firstArg) {
 /*
 This function appends a value to the end of an array, and returns the new size.
 */
-size_t arr_append(unsigned long long *arr, size_t arr_size,
-                  unsigned long long elem) {
+size_t arr_append(unsigned *arr, size_t arr_size,
+                  unsigned elem) {
   arr_size++;
-  arr = (unsigned long long *)realloc(arr, arr_size);
+  arr = (unsigned *)realloc(arr, arr_size);
   arr[arr_size - 1] = elem;
 
   return arr_size;
@@ -37,7 +39,7 @@ size_t arr_append(unsigned long long *arr, size_t arr_size,
 This function prints an array with nice formatting, like in other languages
 like TypeScript, Python, or Swift.
 */
-void arr_print(unsigned long long *arr, size_t arr_size) {
+void arr_print(unsigned *arr, size_t arr_size) {
   if (arr_size == 0) {
     printf("[]\n");
     return;
@@ -45,7 +47,7 @@ void arr_print(unsigned long long *arr, size_t arr_size) {
 
   printf("[");
   for (size_t i = 0; i < arr_size - 1; i++)
-    printf("%llu, ", arr[i]);
+    printf("%u, ", arr[i]);
 
-  printf("%llu]\n", arr[arr_size - 1]);
+  printf("%u]\n", arr[arr_size - 1]);
 }

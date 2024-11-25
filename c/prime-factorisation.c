@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 struct tuple {
-  unsigned long long *arr;
+  unsigned *arr;
   size_t len;
 };
 
@@ -15,9 +15,17 @@ when calling this function from `main()` should be created using `malloc()` and
 should not contain any values. The only reason this is necessary is because C
 doesn't support default arguments.
 */
-struct tuple factorise(unsigned long long num, unsigned long long *factors,
-                       size_t arr_size) {
-  unsigned long long originalNum = num;
+struct tuple factorise(unsigned num) {
+  unsigned *factors = malloc(0);
+  size_t arr_size = 0;
+
+  if (num < 2) {
+    fprintf(stderr, "%u doesn't have any prime factors, try a larger number.\n",
+            num);
+    exit(3);
+  }
+
+  unsigned originalNum = num;
 
   for (int i = 2; i <= sqrt(num); i++) {
     if (num % i == 0) {
@@ -30,9 +38,8 @@ struct tuple factorise(unsigned long long num, unsigned long long *factors,
   if (num == originalNum) {
     arr_size = arr_append(factors, arr_size, num);
   } else {
-    struct tuple f = factorise(num, factors, arr_size);
-    factors = f.arr;
-    arr_size = f.len;
+    struct tuple f = factorise(num);
+    arr_size = arr_concat(factors, arr_size, f.arr, f.len);
   }
 
   struct tuple f = {factors, arr_size};
@@ -47,7 +54,7 @@ numbers that are the prime factors of that number. Example:
 `$ ./pf 25`
 `[5, 5]`
 
-The maximum input is 18446744073709551615.
+The maximum input is 4294967295.
 */
 int main(int argc, char **argv) {
   if (argc != 2) {
@@ -56,12 +63,10 @@ int main(int argc, char **argv) {
   }
 
   char *eptr;
-  unsigned long long num = strtoull(argv[1], &eptr, 10);
+  unsigned num = strtoul(argv[1], &eptr, 10);
   check_in_range(num, argv[1]);
 
-  unsigned long long *factorsArr = malloc(0);
-
-  struct tuple f = factorise(num, factorsArr, 0);
+  struct tuple f = factorise(num);
   arr_print(f.arr, f.len);
 
   return 0;

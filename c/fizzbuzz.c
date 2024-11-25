@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void fizzbuzz(unsigned long long count) {
-    for (unsigned long long i = 1; i <= count; i++) {
+void fizzbuzz(unsigned count) {
+    for (unsigned i = 1; i <= count; i++) {
       if (i % 3 && i % 5) {
-        printf("%llu\n", i);
+        printf("%u\n", i);
         continue;
       }
 
@@ -37,7 +37,7 @@ Fizz
 Buzz
 ```
 
-The maximum input is 18446744073709551615.
+The maximum input is 4294967295.
 */
 int main(int argc, char **argv) {
   if (argc != 2) {
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
   }
 
   char *eptr;
-  unsigned long long count = strtoull(argv[1], &eptr, 10);
+  unsigned count = strtoull(argv[1], &eptr, 10);
 
   check_in_range(count, argv[1]);
 
