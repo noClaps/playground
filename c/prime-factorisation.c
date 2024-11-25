@@ -1,5 +1,4 @@
 #include "lib.h"
-#include <_string.h>
 #include <math.h>
 #include <stdlib.h>
 
@@ -60,18 +59,7 @@ int main(int argc, char **argv) {
 
   char *eptr;
   unsigned long long num = strtoull(argv[1], &eptr, 10);
-
-  char *numStr;
-  snprintf(numStr, 21, "%llu", num);
-
-  if (!num || strncmp(numStr, argv[1], 21) > 0) {
-    fprintf(stderr, "Input too small, the minimum input is 1.\n");
-    exit(2);
-  } else if (strncmp(numStr, argv[1], 21) < 0) {
-    fprintf(stderr,
-            "Input too large, the maximum input is 18446744073709551615.\n");
-    exit(2);
-  }
+  check_in_range(num, argv[1]);
 
   size_t arrLen = max(strnlen(argv[1], num), 10);
   unsigned long long *factorsArr = malloc(arrLen);
