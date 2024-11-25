@@ -6,7 +6,7 @@
 /*
 This function finds the maximum value of two inputs.
 */
-long long max(long long a, long long b) {
+unsigned long long max(unsigned long long a, unsigned long long b) {
   if (a > b)
     return a;
   return b;
