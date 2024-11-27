@@ -31,6 +31,21 @@ unsigned *switchNumsMod(unsigned *nums) {
   return switchedNums;
 }
 
+unsigned* switchNumsSimple(unsigned *nums) {
+    unsigned a = nums[0];
+    unsigned b = nums[1];
+
+    a = a + b;
+    b = a - b;
+    a = a - b;
+
+    unsigned *switchedNums = malloc(2);
+    switchedNums[0] = a;
+    switchedNums[1] = b;
+
+    return switchedNums;
+}
+
 int main(int argc, char **argv) {
   if (argc != 3) {
     fprintf(stderr,
@@ -50,6 +65,9 @@ int main(int argc, char **argv) {
 
   printf("Switching with XOR: ");
   arr_print(switchNumsXor(nums), 2);
+
+  printf("Switching with + and -: ");
+  arr_print(switchNumsSimple(nums), 2);
 
   return 0;
 }
