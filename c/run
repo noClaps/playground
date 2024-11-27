@@ -2,5 +2,5 @@
 
 file=$1
 out=${file%.*}
-cc $file -o $out && ./$out $2
+cc $file -o $out && ./$out $2 $3
 rm -rf $out
