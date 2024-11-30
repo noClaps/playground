@@ -1,11 +1,6 @@
 #include "lib.h"
 #include <math.h>
 
-struct tuple {
-  unsigned *arr;
-  size_t len;
-};
-
 /*
 This function takes a number to factorise, and an existing list of factors. The
 list of factors is needed as this function is recursive and that is the only
@@ -14,35 +9,32 @@ when calling this function from `main()` should be created using `malloc()` and
 should not contain any values. The only reason this is necessary is because C
 doesn't support default arguments.
 */
-struct tuple factorise(unsigned num) {
-  unsigned *factors = malloc(0);
-  size_t arr_size = 0;
-
+List factorise(unsigned num) {
   if (num < 2) {
     fprintf(stderr, "%u doesn't have any prime factors, try a larger number.\n",
             num);
     exit(3);
   }
 
+  List factors = {0, malloc(0)};
   unsigned originalNum = num;
 
   for (int i = 2; i <= sqrt(num); i++) {
     if (num % i == 0) {
       num /= i;
-      arr_size = arr_append(factors, arr_size, i);
+      arr_append(&factors, i);
       break;
     }
   }
 
   if (num == originalNum) {
-    arr_size = arr_append(factors, arr_size, num);
+    arr_append(&factors, num);
   } else {
-    struct tuple f = factorise(num);
-    arr_size = arr_concat(factors, arr_size, f.arr, f.len);
+    List f = factorise(num);
+    arr_concat(&factors, &f);
   }
 
-  struct tuple f = {factors, arr_size};
-  return f;
+  return factors;
 }
 
 /*
@@ -65,8 +57,8 @@ int main(int argc, char **argv) {
   unsigned num = strtoul(argv[1], &eptr, 10);
   check_in_range(num, argv[1]);
 
-  struct tuple f = factorise(num);
-  arr_print(f.arr, f.len);
+  List factors = factorise(num);
+  arr_print(&factors);
 
   return 0;
 }

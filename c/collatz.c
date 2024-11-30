@@ -1,27 +1,20 @@
 #include "lib.h"
 
-struct tuple {
-  unsigned *arr;
-  size_t size;
-};
-
-struct tuple collatz(unsigned num) {
-  size_t arr_size = 1;
-  unsigned *nums = malloc(arr_size);
-  nums[0] = num;
+List collatz(unsigned num) {
+  List nums = {1, malloc(1)};
+  nums.arr[0] = num;
 
   while (num != 1) {
     if (num % 2 == 0) {
       num /= 2;
-      arr_size = arr_append(nums, arr_size, num);
+      arr_append(&nums, num);
     } else {
       num = num * 3 + 1;
-      arr_size = arr_append(nums, arr_size, num);
+      arr_append(&nums, num);
     }
   }
 
-  struct tuple t = {nums, arr_size};
-  return t;
+  return nums;
 }
 
 /*
@@ -45,11 +38,11 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
-  unsigned long long num = strtoull(argv[1], NULL, 10);
+  unsigned num = strtoul(argv[1], NULL, 10);
   check_in_range(num, argv[1]);
 
-  struct tuple t = collatz(num);
-  arr_print(t.arr, t.size);
+  List nums = collatz(num);
+  arr_print(&nums);
 
   return 0;
 }

@@ -14,64 +14,65 @@ void check_in_range(unsigned num, char *firstArg) {
     fprintf(stderr, "Input too small, the minimum input is 1.\n");
     exit(2);
   } else if (strncmp(numStr, firstArg, 11) < 0) {
-
-    fprintf(stderr,
-            "Input too large, the maximum input is %u.\n", UINT_MAX);
+    fprintf(stderr, "Input too large, the maximum input is %u.\n", UINT_MAX);
     exit(2);
   }
 
   free(numStr);
 }
 
-/*
-This function concatenates two arrays, and frees the memory of the second one.
-The parameters are:
-- arr1: The array to get concatenated to
-- arr1_size: The size of arr1
-- arr2: The array getting concatenatated and then freed.
-- arr2_size: The size of arr2
+typedef struct {
+  size_t size;
+  unsigned *arr;
+} List;
 
-It returns the new size of arr1, which is arr1_size + arr2_size.
-*/
-size_t arr_concat(unsigned *arr1, size_t arr1_size, unsigned* arr2, size_t arr2_size) {
-    size_t newSize = arr1_size + arr2_size;
-    arr1 = (unsigned*)realloc(arr1, newSize);
-
-    for (size_t i = arr1_size; i < newSize; i++) {
-        size_t arr2_index = i - arr1_size;
-        arr1[i] = arr2[arr2_index];
-    }
-
-    free(arr2);
-
-    return newSize;
+void arr_free(List *arr) {
+  free(arr->arr);
+  arr->arr = NULL;
+  arr->size = 0;
 }
 
 /*
-This function appends a value to the end of an array, and returns the new size.
+This function concatenates two arrays, and frees the memory of the second one.
+The parameters are:
+- arr1: The list to get concatenated to
+- arr2: The list getting concatenatated.
 */
-size_t arr_append(unsigned *arr, size_t arr_size,
-                  unsigned elem) {
-  arr_size++;
-  arr = (unsigned *)realloc(arr, arr_size);
-  arr[arr_size - 1] = elem;
+void arr_concat(List *arr1, List *arr2) {
+  size_t oldSize = arr1->size;
+  arr1->size += arr2->size;
+  arr1->arr = (unsigned *)realloc(arr1->arr, arr1->size * sizeof(arr1->arr[0]));
 
-  return arr_size;
+  for (size_t i = oldSize; i < arr1->size; i++) {
+    size_t arr2_index = i - oldSize;
+    arr1->arr[i] = arr2->arr[arr2_index];
+  }
+
+  arr_free(arr2);
+}
+
+/*
+This function appends a value to the end of an array.
+*/
+void arr_append(List *arr, unsigned elem) {
+  arr->size++;
+  arr->arr = (unsigned *)realloc(arr->arr, arr->size * sizeof(elem));
+  arr->arr[arr->size - 1] = elem;
 }
 
 /*
 This function prints an array with nice formatting, like in other languages
 like TypeScript, Python, or Swift.
 */
-void arr_print(unsigned *arr, size_t arr_size) {
-  if (arr_size == 0) {
+void arr_print(List *arr) {
+  if (arr->size == 0) {
     printf("[]\n");
     return;
   }
 
   printf("[");
-  for (size_t i = 0; i < arr_size - 1; i++)
-    printf("%u, ", arr[i]);
+  for (size_t i = 0; i < arr->size - 1; i++)
+    printf("%u, ", arr->arr[i]);
 
-  printf("%u]\n", arr[arr_size - 1]);
+  printf("%u]\n", arr->arr[arr->size - 1]);
 }

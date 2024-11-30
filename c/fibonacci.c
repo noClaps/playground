@@ -4,14 +4,14 @@
 This function takes a number and an array, and outputs that number of values in
 the Fibonacci sequence.
 */
-unsigned *fibonacci(unsigned n) {
-  unsigned *nums = malloc(n);
+List fibonacci(unsigned n) {
+  List nums = {n, malloc(n)};
 
   unsigned a = 0;
   unsigned b = 1;
 
   for (size_t i = 0; i < n; i++) {
-    nums[i] = a;
+    nums.arr[i] = a;
     unsigned temp = a;
     a = b;
     b += temp;
@@ -28,7 +28,7 @@ many values in the Fibonacci sequence. Example:
 `$ ./fib 5`
 `[0, 1, 1, 2, 3]`
 
-The maximum input is 18446744073709551615.
+The maximum input is 4294967295.
 */
 int main(int argc, char **argv) {
   if (argc != 2) {
@@ -37,10 +37,11 @@ int main(int argc, char **argv) {
   }
 
   char *eptr;
-  unsigned num = strtoull(argv[1], &eptr, 10);
+  unsigned num = strtoul(argv[1], &eptr, 10);
   check_in_range(num, argv[1]);
 
-  arr_print(fibonacci(num), num);
+  List fib = fibonacci(num);
+  arr_print(&fib);
 
   return 0;
 }
