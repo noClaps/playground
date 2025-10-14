@@ -1,4 +1,5 @@
-#include "lib.h"
+#include "./lib/arr.c"
+#include "./lib/util.c"
 
 /*
 This function takes a number and an array, and outputs that number of values in

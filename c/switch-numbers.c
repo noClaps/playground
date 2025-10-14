@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "./lib/arr.c"
 
 List switchNumsXor(List nums) {
   unsigned a = nums.arr[0];

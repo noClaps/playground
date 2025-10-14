@@ -1,4 +1,5 @@
-#include "lib.h"
+#include "./lib/arr.c"
+#include "./lib/util.c"
 
 List collatz(unsigned num) {
   List nums = {1, malloc(1)};

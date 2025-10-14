@@ -1,4 +1,7 @@
-#include "lib.h"
+#include "./lib/util.c"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void fizzbuzz(unsigned count) {
     for (unsigned i = 1; i <= count; i++) {

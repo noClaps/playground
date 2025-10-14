@@ -1,4 +1,5 @@
-#include "lib.h"
+#include "./lib/arr.c"
+#include "./lib/util.c"
 #include <math.h>
 
 /*
