@@ -1,4 +1,4 @@
-#include "./lib/string.c"
+#include "../lib/string.c"
 #include <ctype.h>
 #include <math.h>
 #include <stdbool.h>
