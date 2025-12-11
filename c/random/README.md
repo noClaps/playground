@@ -5,7 +5,7 @@ A command line tool to generate random numbers.
 ## Build instructions
 
 ```sh
-git clone https://github.com/noClaps/playground.git && cd c/random/
+git clone https://codeberg.org/noClaps/playground.git && cd c/random/
 cc random.c -o random # replace `cc` with your C compiler, like `gcc` or `clang`
 ```
 

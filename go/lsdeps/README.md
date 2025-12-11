@@ -7,7 +7,7 @@ This is a CLI tool to show the total number of dependencies that any package has
 You can build it from source using Go:
 
 ```sh
-git clone https://github.com/noClaps/playground.git && cd go/passgen/
+git clone https://codeberg.org/noClaps/playground.git && cd go/passgen/
 go build
 ```
 

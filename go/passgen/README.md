@@ -7,7 +7,7 @@ A command line tool to generate passwords of a given length.
 ## Build instructions
 
 ```sh
-git clone https://github.com/noClaps/playground.git && cd go/passgen/
+git clone https://codeberg.org/noClaps/playground.git && cd go/passgen/
 go build
 ```
 
