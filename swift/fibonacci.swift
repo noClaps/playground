@@ -12,7 +12,5 @@ func fib(_ n: Int) -> [Int] {
     return nums
 }
 
-guard let n = Int(CommandLine.arguments[1]) else {
-    fatalError("Could not parse integer from argument")
-}
+let n = Int(CommandLine.arguments[1])!
 print(fib(n))

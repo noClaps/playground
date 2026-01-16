@@ -14,7 +14,5 @@ func collatzLength(_ n: Int) -> [Int] {
     return nums
 }
 
-guard let num = Int(CommandLine.arguments[1]) else {
-    fatalError("Could not parse integer from argument")
-}
+let num = Int(CommandLine.arguments[1])!
 print(collatzLength(num))

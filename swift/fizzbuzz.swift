@@ -10,7 +10,5 @@ func fizzbuzz(_ n: Int) {
 
 }
 
-guard let n = Int(CommandLine.arguments[1]) else {
-    fatalError("Could not parse integer from argument")
-}
+let n = Int(CommandLine.arguments[1])!
 fizzbuzz(n)
