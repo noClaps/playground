@@ -7,8 +7,8 @@ A command line tool to check the strength of a password.
 ## Build instructions
 
 ```sh
-git clone https://codeberg.org/noClaps/playground.git && cd c/psc/
-cc psc.c -o psc # replace `cc` with your C compiler, like `gcc` or `clang`
+git clone https://codeberg.org/noClaps/playground.git && cd swift/psc/
+swiftc psc.swift
 ```
 
 ## Usage
@@ -17,10 +17,10 @@ cc psc.c -o psc # replace `cc` with your C compiler, like `gcc` or `clang`
 USAGE: psc <password>
 
 ARGUMENTS:
-  <password>     The password to check strength of.
+  <password>    The password to check the strength of.
 
 OPTIONS:
-  -h, --help     Display this help and exit.
+  -h, --help    Show help information.
 ```
 
 You can use the tool simply by running:
