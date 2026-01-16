@@ -1,10 +1,18 @@
-func fib(_ n: Int) -> Int {
-    if n < 2 {
-        return n
+func fib(_ n: Int) -> [Int] {
+    var nums: [Int] = []
+
+    var a = 0
+    var b = 1
+
+    for _ in 0..<n {
+        nums.append(a)
+        (a, b) = (b, a + b)
     }
 
-    return fib(n - 1) + fib(n - 2)
+    return nums
 }
 
-let n = 20
+guard let n = Int(CommandLine.arguments[1]) else {
+    fatalError("Could not parse integer from argument")
+}
 print(fib(n))
