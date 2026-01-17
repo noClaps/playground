@@ -1,11 +1,11 @@
 import Foundation
 
 struct Args {
-    var help: Bool
-    var isInt: Bool
-    var coin: Bool
-    var min: Double
-    var max: Double
+    var help = false
+    var isInt = false
+    var coin = false
+    var min = 0.0
+    var max = 1.0
 
     mutating func parse() {
         var remainingArgs: [String] = []
@@ -33,7 +33,7 @@ struct Args {
     }
 }
 
-var args = Args(help: false, isInt: false, coin: false, min: 0, max: 1)
+var args = Args()
 args.parse()
 
 if args.help {
