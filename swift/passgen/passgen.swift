@@ -68,14 +68,12 @@ struct Args {
                 skip = false
                 continue
             }
-            if argv[i] == "--help" || argv[i] == "-h" {
-                help = true
-                continue
-            }
-            if argv[i] == "-s" {
+            switch argv[i] {
+            case "--help", "-h": help = true
+            case "-s":
                 separator = argv[i + 1]
                 skip = true
-                continue
+            default: break
             }
             if !argv[i].starts(with: "-") {
                 remainingArgs.append(argv[i])
