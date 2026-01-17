@@ -7,18 +7,22 @@ This is a CLI tool to show the total number of dependencies that any package has
 You can build it from source using Go:
 
 ```sh
-git clone https://codeberg.org/noClaps/playground.git && cd go/passgen/
-go build
+git clone https://codeberg.org/noClaps/playground.git && cd swift/passgen/
+swiftc lsdeps.swift
 ```
 
 ## Usage
 
 ```
-Usage of lsdeps:
-  -skipopt
-    	Skip counting optional dependencies.
-  -skippeer
-    	Skip counting peer dependencies.
+USAGE: lsdeps <name> [--skip-optional] [--skip-peer]
+
+ARGUMENTS:
+  <name>                 The name of the package to fetch
+  
+OPTIONS:
+  -o, --skip-optional    Skip counting optional dependencies.
+  -p, --skip-peer        Skip counting peer dependencies.
+  -h, --help             Show help information.
 ```
 
 You can use the tool simply by running:
@@ -27,31 +31,25 @@ You can use the tool simply by running:
 lsdeps astro # or any other package on npm
 ```
 
-You can also skip counting peer dependencies with the `-skippeer` flag:
+You can also skip counting peer dependencies with the `--skip-peer` or `-p` flag:
 
 ```sh
-lsdeps -skippeer astro
+lsdeps --skip-peer astro
+lsdeps -p astro
 ```
 
-and optional dependencies with the `-skipopt` flag:
+and optional dependencies with the `--skip-optional` or `-o` flag:
 
 ```sh
-lsdeps -skipopt astro
+lsdeps --skip-optional astro
+lsdeps -o astro
 ```
 
-If you want to skip both, you can chain them together:
-
-```sh
-# Both of these do the same thing
-lsdeps -skipopt -skippeer astro
-lsdeps -skippeer -skipopt astro
-```
-
-You can view the help by using `-h` or `-help`:
+You can view the help by using `-h` or `--help`:
 
 ```sh
 lsdeps -h
-lsdeps -help
+lsdeps --help
 ```
 
 ## Motivation
