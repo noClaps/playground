@@ -4,10 +4,8 @@ This is a CLI tool to show the total number of dependencies that any package has
 
 ## Build instructions
 
-You can build it from source using Go:
-
 ```sh
-git clone https://codeberg.org/noClaps/playground.git && cd swift/passgen/
+git clone https://codeberg.org/noClaps/playground.git && cd swift/lsdeps/
 swiftc lsdeps.swift
 ```
 
