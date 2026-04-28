@@ -5,7 +5,7 @@ This is a CLI tool to show the total number of dependencies that any package has
 ## Build instructions
 
 ```sh
-git clone https://codeberg.org/noClaps/playground.git && cd swift/lsdeps/
+git clone https://codefloe.com/noClaps/playground.git && cd swift/lsdeps/
 swiftc lsdeps.swift
 ```
 

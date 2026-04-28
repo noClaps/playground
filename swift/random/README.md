@@ -5,7 +5,7 @@ A command line tool to generate random numbers.
 ## Build instructions
 
 ```sh
-git clone https://codeberg.org/noClaps/playground.git && cd swift/random/
+git clone https://codefloe.com/noClaps/playground.git && cd swift/random/
 swiftc random.swift
 ```
 
