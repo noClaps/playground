@@ -7,7 +7,7 @@ A command line tool to generate passwords of a given length.
 ## Build instructions
 
 ```sh
-git clone https://codefloe.com/noClaps/playground.git && cd swift/passgen/
+git clone https://github.com/noClaps/playground.git && cd swift/passgen/
 swiftc passgen.swift
 ```
 

@@ -7,7 +7,7 @@ A command line tool to check the strength of a password.
 ## Build instructions
 
 ```sh
-git clone https://codefloe.com/noClaps/playground.git && cd swift/psc/
+git clone https://github.com/noClaps/playground.git && cd swift/psc/
 swiftc psc.swift
 ```
 
