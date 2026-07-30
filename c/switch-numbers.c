@@ -37,8 +37,8 @@ void switch_nums_simple(int *a, int *b) {
 
 int main(int argc, char **argv) {
   if (argc < 2) {
-    fprintf(stderr, "Not enough parameters\n");
-    return 1;
+    fprintf(stderr, "Usage: %s <int> <int>\n", argv[0]);
+    return 0;
   }
 
   int a = atoi(argv[1]);
@@ -55,6 +55,4 @@ int main(int argc, char **argv) {
   b = atoi(argv[2]);
   switch_nums_simple(&a, &b);
   printf("Switching with + and -: %d %d\n", a, b);
-
-  return 0;
 }

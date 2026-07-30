@@ -12,5 +12,4 @@ int main() {
     printf("%lld", (*(long long *)&num >> i) & 1);
   }
   printf("\n");
-  return 0;
 }

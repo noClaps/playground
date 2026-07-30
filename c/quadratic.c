@@ -44,6 +44,11 @@ double quadratic(double a, double b, double c) {
 }
 
 int main(int argc, char **argv) {
+  if (argc < 4) {
+    fprintf(stderr, "Usage: %s <double> <double> <double>\n", argv[0]);
+    return 0;
+  }
+
   double a = atof(argv[1]);
   double b = atof(argv[2]);
   double c = atof(argv[3]);
