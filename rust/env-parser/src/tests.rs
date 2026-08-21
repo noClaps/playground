@@ -1,8 +1,8 @@
 use crate::parse_env;
 
 macro_rules! hashmap {
-    ($($key:expr => $value:expr,)*) => {
-        std::collections::HashMap::from([$(($key, $value),)*])
+    ($($key:ident=$value:expr,)*) => {
+        std::collections::HashMap::from([$((stringify!($key).to_string(), $value.to_string()),)*])
     };
 }
 
@@ -10,10 +10,25 @@ macro_rules! hashmap {
 fn parsing() {
     let env = parse_env("testdata/.env").unwrap();
     let expected = hashmap! {
-        "DB_HOST".to_string() => "localhost".to_string(),
-        "DB_PORT".to_string() => "5432".to_string(),
-        "API_KEY".to_string()=>"my_api_key".to_string(),
-        "LOG_FILE".to_string()=>"app.log".to_string(),
+        DB_HOST="localhost",
+        DB_PORT="5432",
+        API_KEY="my_api_key",
+        LOG_FILE="app.log",
+        KEY="VALUE",
+        empty="",
+        another="value=more",
+        quoted="value",
+        newlines="value\\nwith\\nnewlines",
+        comment="value#notacomment",
+        nonascii="value🍪",
+        duplicate="2",
     };
-    assert_eq!(env, expected);
+    for (k, v) in expected {
+        if !env.contains_key(&k) {
+            panic!("expected key {k} not found");
+        }
+        if env[&k] != v {
+            panic!("expected {k}={v}, got {k}={}", env[&k]);
+        }
+    }
 }
