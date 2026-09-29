@@ -9,6 +9,6 @@ int main() {
   double input;
   scanf("%lf", &input);
 
-  double celcius = (input - FREEZING_PT) * SCALE_FACTOR;
-  printf("Celsius equivalent: %.1lf\n", celcius);
+  double celsius = (input - FREEZING_PT) * SCALE_FACTOR;
+  printf("Celsius equivalent: %.1lf\n", celsius);
 }
